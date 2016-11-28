@@ -1,12 +1,11 @@
 const webpack = require('webpack');
-
 const path = require('path');
 
 module.exports = {
   entry: path.resolve(__dirname, 'src', 'index.js'),
   output: {
     path: path.resolve(__dirname, 'lib'),
-    fileName: 'bundle.js',
+    filename: 'bundle.js',
   },
   devTool: 'cheap-eval-source-map',
   module: {
@@ -45,15 +44,6 @@ module.exports = {
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-            compress: {
-              warnings: false,
-              screw_ie8: true,
-            },
-            output: {
-              comments: false,
-            },
-            sourcemap: false,
-          }),
+    // TODO: uglify prod build
   ],
 }
