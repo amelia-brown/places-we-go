@@ -35,6 +35,9 @@ node_modules
 ### PhPStorm ###
 .idea/
 
+### Bundled ###
+lib
+
 # Floobits
 .floo
 .floobit
