@@ -5,7 +5,7 @@ let map;
 export const loadMap = (coordinates) => new Promise((resolve, reject) => {
   let options = {
     center: coordinates,
-    zoom: 12,
+    zoom: 18,
   }
   map = new google.maps.Map(document.getElementById('map'), options);
   return map;

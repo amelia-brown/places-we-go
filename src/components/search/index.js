@@ -1,21 +1,39 @@
 import React from 'react';
-import {search} from '../../actions';
+import {search, select} from '../../actions';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import throttle from 'lodash.throttle';
 
 import styles from './styles.sass';
 
-const Result = ({item}) => (
+let term;
+
+const ResultContainer = ({item, select, search}) => (
   <div
     key={item.id}
+    onClick={() => {
+      select({
+        lat:item.geometry.location.lat(),
+        lng:item.geometry.location.lng()
+      })
+      search('');
+      term.value='';
+    }}
     className='search-result'>
     <span>{item.name}</span>
     <i className='material-icons'>add</i>
   </div>
 );
 
-let term;
+const mapResultDispatchToProps = (dispatch) => bindActionCreators({
+  select,
+  search,
+}, dispatch);
+
+const Result = connect(
+  ()=>({}),
+  mapResultDispatchToProps,
+)(ResultContainer)
 
 const Search = ({results, search, map}) => (
   <div className='search'>
