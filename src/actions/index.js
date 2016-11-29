@@ -1,8 +1,8 @@
 import {searchMaps, loadMap} from '../utils/api';
 
-export const search = (term) => ({
+export const search = (term, map) => ({
   type: 'SEARCH',
-  payload: search(term),
+  payload: searchMaps(term, map),
 })
 
 export const select = (coordinates) => ({

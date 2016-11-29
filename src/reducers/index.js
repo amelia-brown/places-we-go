@@ -1,10 +1,13 @@
 import {combineReducers} from 'redux';
 import uuid from 'uuid';
 
+const initialSaved = localStorage.getItem('store')
+  ? JSON.stringify(localStorage.getItem('store'))
+  : {};
 const initialCoordinates = {lat:37.7749, lng:-122.4194};
 let generateId = () => new uuid();
 
-const saved = (state = {}, action) => {
+const saved = (state = initialSaved, action) => {
   switch (action.type) {
     case 'SAVE':
       let id = generateId();
