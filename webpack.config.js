@@ -7,7 +7,7 @@ module.exports = {
     path: path.resolve(__dirname, 'lib'),
     filename: 'bundle.js',
   },
-  devTool: 'cheap-eval-source-map',
+  devtool: 'cheap-eval-source-map',
   module: {
     loaders: [
       {
@@ -16,8 +16,8 @@ module.exports = {
         exclude: 'node_modules',
       },
       {
-        test: /\.css$/,
-        loader: 'css!style!sass',
+        test: /\.(css|sass)$/,
+        loader: 'style!css!sass',
       },
       {
         test: /\.json$/,
