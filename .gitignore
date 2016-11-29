@@ -1,5 +1,4 @@
 ### API KEY ###
-API_KEY.js
 
 ### OSX ###
 .DS_Store
@@ -38,7 +37,6 @@ node_modules
 ### PhPStorm ###
 .idea/
 ### Bundled ###
-lib
 
 # Floobits
 .floo
