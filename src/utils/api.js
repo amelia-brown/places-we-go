@@ -1,14 +1,13 @@
-import {API_KEY} from '../../API_KEY.js';
-
 let map;
 
-export const loadMap = (coordinates) => new Promise((resolve, reject) => {
-  let options = {
-    center: coordinates,
+export const loadMap = (options) => new Promise((resolve, reject) => {
+  let settings = {
+    center: options.coordinates,
     zoom: 18,
   }
-  map = new google.maps.Map(document.getElementById('map'), options);
-  return map;
+  map = new google.maps.Map(document.getElementById('map'), settings);
+  createMarker(options.coordinates);
+  return resolve(options);
 });
 
 export const searchMaps = (text, location) => new Promise((resolve, reject) => {
@@ -24,9 +23,6 @@ export const searchMaps = (text, location) => new Promise((resolve, reject) => {
   }
   Library.nearbySearch(request, (response) => {
     resolve(response);
-    console.log(response);
-    console.log(response[0].geometry.location.lat());
-    console.log(response[0].geometry.location.lng());
   });
 });
 

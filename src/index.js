@@ -15,6 +15,7 @@ const store = createStore(
   rootReducer,
   applyMiddleware(
     promiseMiddleware(),
+    persist,
   ),
 );
 

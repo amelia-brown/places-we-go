@@ -1,33 +1,36 @@
 import {combineReducers} from 'redux';
-import uuid from 'uuid';
 
 const initialSaved = localStorage.getItem('store')
   ? JSON.stringify(localStorage.getItem('store'))
   : {};
+
 const initialCoordinates = {lat:37.7749, lng:-122.4194};
-let generateId = () => new uuid();
+let generateId = () => uuid();
 
 const saved = (state = initialSaved, action) => {
   switch (action.type) {
     case 'SAVE':
-      let id = generateId();
       return Object.assign({}, state, {
-        id: action.payload,
+        [action.payload.name]: action.payload,
       })
     case 'REMOVE':
-      let newObj = delete state.id
+      let newObj = delete state[action.payload.name];
       return Object.assign({}, state, newObj);
     default:
       return state
   }
 };
 
-const map = (state = initialCoordinates, action) => {
+const map = (state = {coordinates:initialCoordinates}, action) => {
   switch (action.type) {
     case 'SELECT_FULFILLED':
       return Object.assign({}, state, {
-        lat: action.payload.lat,
-        lng: action.payload.lng,
+        coordinates: {
+          lat: action.payload.coordinates.lat,
+          lng: action.payload.coordinates.lng,
+        },
+        address: action.payload.address,
+        name: action.payload.name,
       })
     default:
       return state

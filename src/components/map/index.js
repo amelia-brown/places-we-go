@@ -12,7 +12,8 @@ class MapContainer extends Component {
 
   render() {
     return (
-      <div id='map'></div>
+      <div id='map'>
+      </div>
     )
   }
 }

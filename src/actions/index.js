@@ -5,9 +5,9 @@ export const search = (term, map) => ({
   payload: searchMaps(term, map),
 })
 
-export const select = (coordinates) => ({
+export const select = (options) => ({
   type: 'SELECT',
-  payload: loadMap(coordinates),
+  payload: loadMap(options),
 })
 
 export const save = (options) => ({
