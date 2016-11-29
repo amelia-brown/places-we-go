@@ -2,19 +2,15 @@ import {API_KEY} from '../../API_KEY.js';
 const libraryLink = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=places`;
 
 
-export const initMap = () => {
+export const loadMap = (coordinates) => new Promise((resolve, reject) => {
   let options = {
-    center: {
-      lat: 37.7749,
-      lng:-122.4194,
-    },
+    center: coordinates,
     zoom: 12,
   }
-  var map = new google.maps.Map(document.getElementById('map'), options);
-  console.log(map);
-}
+  let map = new google.maps.Map(document.getElementById('map'), options);
+})
 
-export const getPlace = (text) => {
+export const searchMaps = (text) => {
   const Library = new google.maps.places.PlacesService(map);
   const request = {
     query: text,

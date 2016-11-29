@@ -1,28 +1,26 @@
-import React, {Component} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import {initMap, getPlace} from './utils/api';
+import MapContainer from './components/map';
+import {Provider} from 'react-redux';
+import {createStore, applyMiddleware} from 'redux';
+import rootReducer from './reducers';
+import promiseMiddleware from 'redux-promise-middleware';
 
 import styles from './main.sass';
 
-class Map extends Component {
-  componentDidMount () {
-    initMap();
-  }
-
-  render() {
-    return (
-      <div id='map'></div>
-    )
-  }
-}
-
-
+const store = createStore(
+  rootReducer,
+  applyMiddleware(
+    promiseMiddleware(),
+  ),
+);
 
 const App = () => (
-  <div>
-    <div>Hello World</div>
-    <Map />
-  </div>
+  <Provider store={store}>
+    <div>
+      <MapContainer />
+    </div>
+  </Provider>
 )
 
 ReactDOM.render(<App/>, document.getElementById('mount'));
