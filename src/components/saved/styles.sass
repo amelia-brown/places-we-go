@@ -37,6 +37,7 @@
   top: 0
   height: 100vh
   background: #eee
+  overflow: scroll
   @extend .shadow
 
 .saved-item
@@ -50,6 +51,20 @@
     @extend .text-card-subtitle
   .saved-item-icon
     @extend .text-card-icon
+    position: absolute
+    font-size: 30px
+    top: 0
+    left: 0
+    &:hover
+      opacity: 0
+  .outline
+    color: #000
+
+.saved-item-action
+  width: 24px
+  height: 24px
+  position: relative
+
 .saved-empty-text
   text-align: center
   margin: 48px 0

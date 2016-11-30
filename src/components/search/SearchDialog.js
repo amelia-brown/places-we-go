@@ -11,7 +11,7 @@ class SearchDialog extends Component {
     document.getElementById('dialog').focus();
   }
   render() {
-    let {map, save, clearDialog} = this.props;
+    let {map, save, clearDialog, saved} = this.props;
     return (
       <div
         id='dialog'
@@ -23,8 +23,9 @@ class SearchDialog extends Component {
           <span className='search-dialog-address'>{map.address}</span>
         </div>
         <div className='search-dialog-action'>
-          <i className='material-icons search-dialog-icon'
-            onClick={() => {console.log('clicked'); save(map)}}>
+          {console.log('xx', saved[map.name])}
+          <i className={`material-icons search-dialog-icon ${saved[map.name] ? 'black' : ''}`}
+            onClick={() => save(map)}>
             favorite
           </i>
         </div>
@@ -33,8 +34,9 @@ class SearchDialog extends Component {
   }
 }
 
-const mapStateToProps = ({map}) => ({
+const mapStateToProps = ({map, saved}) => ({
   map,
+  saved,
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
