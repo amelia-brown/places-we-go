@@ -11,7 +11,6 @@ import styles from './styles.sass';
 const Search = ({map}) => (
   <div>
     <SearchBar />
-    {console.log(map)}
     { map.name
       ? <SearchDialog />
       : ''

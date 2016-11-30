@@ -19,7 +19,10 @@ const SearchResults = ({item, select, search, term}) => (
       term.value='';
     }}
     className='search-result'>
-    <div className='search-result-name'>{item.name}</div>
+      <div className='search-result-text'>
+        <span className='search-result-name'>{item.name}</span>
+        <span className='search-result-address'>{item.vicinity}</span>
+      </div>
     <i className='material-icons search-result-icon'>place</i>
   </div>
 );
@@ -33,7 +36,3 @@ export default connect(
   ()=>({}),
   mapDispatchToProps,
 )(SearchResults)
-
-
-
-

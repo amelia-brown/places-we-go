@@ -17,7 +17,6 @@ const Saved = ({saved, savedDisplay}) => {
     }
     savedItems.push(item);
   }
-  console.log(savedItems);
   if (savedDisplay.hidden === false) {
       return (
         <div className='show saved-sidebar'>

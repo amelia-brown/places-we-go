@@ -1,6 +1,7 @@
 let map;
 
 export const loadMap = (options) => new Promise((resolve, reject) => {
+  try {
   let settings = {
     center: options.coordinates,
     zoom: 18,
@@ -8,6 +9,9 @@ export const loadMap = (options) => new Promise((resolve, reject) => {
   map = new google.maps.Map(document.getElementById('map'), settings);
   createMarker(options.coordinates);
   return resolve(options);
+  } catch (err) {
+    console.log(err)
+  }
 });
 
 export const searchMaps = (text, location) => new Promise((resolve, reject) => {

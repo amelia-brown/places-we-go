@@ -36,6 +36,7 @@ const saved = (state = initialSaved, action) => {
 const map = (state = {coordinates:initialCoordinates}, action) => {
   switch (action.type) {
     case 'SELECT_FULFILLED':
+      console.log('xxx',action.payload);
       return Object.assign({}, state, {
         coordinates: {
           lat: action.payload.coordinates.lat,
@@ -53,11 +54,10 @@ const map = (state = {coordinates:initialCoordinates}, action) => {
 };
 
 const results = (state = [], action) => {
+  console.log(action)
   switch (action.type) {
     case 'SEARCH_FULFILLED':
-      console.log(action.payload)
       let results = action.payload.slice(0,5);
-      console.log(results)
       return results
     default:
       return state

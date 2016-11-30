@@ -21,11 +21,16 @@
     padding: 0 16px
     font-size: 20px
     color: #888
+    background: #fbfbfb
+    &:focus
+      outline: none
+      background: #fff
 
   .search-button
     width: 72px
     height: 24px
     padding: 12px 0
+    cursor: pointer
     text-align: center
     color: #fff
     background: $red
@@ -33,23 +38,39 @@
 
 .search-result
   width: 528px
-  padding: 0 16px
+  padding: 16px
+  height: 16px
   background: #fff
+  @extend .shadow
   @extend .text-card
+  &:hover
+    background: #f7f7f7
+    cursor: pointer
+
+
   .search-result-name
+    @extend .text-card-title
+    font-size: 16px
+    display: inline-block
+    padding: 0 24px 0 0
+  .search-result-address
     @extend .text-card-subtitle
+    font-size: 14px
+    padding-top: 0
   .search-result-icon
-    @extend .text-card-subtitle
+    @extend .text-card-icon
 
 .search-dialog
   position: absolute
   bottom: 30%
   right: 0
   left: 0
-  height: 132px
+  height: 72px
   margin: auto
+  width: 528px
+  padding: 16px
+  background: #fff
   @extend .shadow
-  @extend .search-result
   @extend .text-card
   &:focus
     outline: none
@@ -79,4 +100,3 @@
   width: 48px
   height: 48px
   position: relative
-

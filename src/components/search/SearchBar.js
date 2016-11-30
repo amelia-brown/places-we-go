@@ -14,7 +14,7 @@ const Search = ({results, search, map}) => (
       <input
         ref={(node) => term = node}
         placeholder='Find a place'
-        onChange={debounce(() => search(term.value, map.coordinates), 500)} />
+        onChange={debounce(() => search(term.value, map.coordinates), 200)} />
       <div className='search-button'
         onClick={() => search(term.value, map.coordinates)}>
         <i className='material-icons search-icon'>search</i>
