@@ -22,7 +22,8 @@ export const searchMaps = (text, location) => new Promise((resolve, reject) => {
     radius: 20000
   }
   Library.nearbySearch(request, (response) => {
-    resolve(response);
+//    console.log(response);
+    return resolve(response);
   });
 });
 

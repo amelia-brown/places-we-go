@@ -8,6 +8,7 @@ import promiseMiddleware from 'redux-promise-middleware';
 import persist from './utils/persist';
 import MapContainer from './components/map';
 import Search from './components/search';
+import Saved from './components/saved';
 
 import styles from './main.sass';
 
@@ -24,6 +25,7 @@ const App = () => (
     <div>
       <MapContainer />
       <Search />
+      <Saved />
     </div>
   </Provider>
 )

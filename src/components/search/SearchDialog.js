@@ -5,12 +5,16 @@ import {save} from '../../actions';
 
 let SearchDialog = ({map, save}) => (
   <div className='search-dialog'>
-    <span className='search-dialog-name'>{map.name}</span>
-    <span className='search-dialog-address'>{map.address}</span>
-    <i className='material-icons'
-       onClick={() => {console.log('clicked'); save(map)}}>
-        favorite
-    </i>
+    <div className='search-dialog-text'>
+      <span className='search-dialog-name'>{map.name}</span>
+      <span className='search-dialog-address'>{map.address}</span>
+    </div>
+    <div className='search-dialog-action'>
+      <i className='material-icons search-dialog-icon'
+         onClick={() => {console.log('clicked'); save(map)}}>
+          favorite
+      </i>
+    </div>
   </div>
 );
 

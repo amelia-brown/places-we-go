@@ -10,12 +10,16 @@ export const select = (options) => ({
   payload: loadMap(options),
 })
 
+export const toggleSaved = () => ({
+  type: 'TOGGLE_SAVED',
+})
+
 export const save = (options) => ({
   type: 'SAVE',
   payload: options,
 })
 
-export const remove = (id) => ({
+export const remove = (name) => ({
   type: 'REMOVE',
-  payload: options,
+  payload: name,
 })

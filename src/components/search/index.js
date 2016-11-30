@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 
 import SearchBar from './SearchBar';
 import SearchDialog from './SearchDialog';
+import SearchResults from './SearchResults';
 
 import styles from './styles.sass';
 

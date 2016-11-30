@@ -1,0 +1,55 @@
+@import '../../main'
+
+.saved-sidebar
+  position: fixed
+  right: 0
+  top: 0
+  width: 72px
+  height: 100vh
+  transition: width 0.4s ease-in
+
+.saved-sidebar.show
+  width: 364px
+  transition: width 0.4s ease-in
+
+.saved-sidebar.hide
+  width: 72px
+  transition: width 0.4s ease-in
+
+.saved-sidebar-toggle
+  cursor: pointer
+  z-index: 1
+  margin: 48px 24px 24px -24px
+  width: 32px
+  line-height: 44px
+  text-align: center
+  height: 32px
+  padding: 8px 8px 8px 8px
+  border-radius: 50%
+  background: $red
+
+.saved-container
+  width: 364px
+  z-index: 0
+  position: absolute
+  top: 0
+  height: 100vh
+  background: #eee
+  @extend .shadow
+
+.saved-item
+  @extend .text-card
+  border-bottom: 1px solid #ccc
+  width: 332px
+
+  .saved-item-title
+    @extend .text-card-title
+  .saved-item-location
+    @extend .text-card-subtitle
+  .saved-item-icon
+    @extend .text-card-icon
+.saved-empty-text
+  text-align: center
+  margin: 48px 0
+
+

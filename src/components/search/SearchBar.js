@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import throttle from 'lodash.throttle';
 
-import Result from './SearchResults';
+import SearchResults from './SearchResults';
 
 let term;
 
@@ -16,7 +16,7 @@ const Search = ({results, search, map}) => (
       onChange={throttle(() => search(term.value, map.coordinates), 500)} />
     {
       results
-      ? results.map((result) => <Result item={result} term={term} />)
+      ? results.map((result) => <SearchResults item={result} term={term} />)
       : ''
     }
   </div>
@@ -26,11 +26,10 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
   search,
 }, dispatch);
 
-const mapStateToProps = ({results, map}) => {
-  return {
+const mapStateToProps = ({results, map}) => ({
   results,
   map,
-}};
+});
 
 export default connect(
   mapStateToProps,

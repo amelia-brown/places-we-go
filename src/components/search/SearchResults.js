@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import throttle from 'lodash.throttle';
 
-const ResultContainer = ({item, select, search, term}) => (
+const SearchResults = ({item, select, search, term}) => (
   <div
     key={item.id}
     onClick={() => {
@@ -33,7 +33,7 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
 export default connect(
   ()=>({}),
   mapDispatchToProps,
-)(ResultContainer)
+)(SearchResults)
 
 
 
