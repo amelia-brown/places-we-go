@@ -5,9 +5,17 @@ export const search = (term, map) => ({
   payload: searchMaps(term, map),
 })
 
-export const select = (coordinates) => ({
+export const select = (options) => ({
   type: 'SELECT',
-  payload: loadMap(coordinates),
+  payload: loadMap(options),
+})
+
+export const toggleSaved = () => ({
+  type: 'TOGGLE_SAVED',
+})
+
+export const clearDialog = () => ({
+  type: 'CLEAR_DIALOG',
 })
 
 export const save = (options) => ({
@@ -15,7 +23,7 @@ export const save = (options) => ({
   payload: options,
 })
 
-export const remove = (id) => ({
+export const remove = (item) => ({
   type: 'REMOVE',
-  payload: options,
+  payload: item
 })

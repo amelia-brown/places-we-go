@@ -1,34 +1,52 @@
 import {combineReducers} from 'redux';
-import uuid from 'uuid';
 
 const initialSaved = localStorage.getItem('store')
-  ? JSON.stringify(localStorage.getItem('store'))
+  ? JSON.parse(localStorage.getItem('store'))
   : {};
+
 const initialCoordinates = {lat:37.7749, lng:-122.4194};
-let generateId = () => new uuid();
+let generateId = () => uuid();
+
+const savedDisplay = (state = {hidden: true}, action) => {
+  switch (action.type) {
+    case 'TOGGLE_SAVED':
+      return {
+        ...state,
+        hidden: !state.hidden,
+      }
+    default:
+      return state;
+  }
+}
 
 const saved = (state = initialSaved, action) => {
   switch (action.type) {
     case 'SAVE':
-      let id = generateId();
       return Object.assign({}, state, {
-        id: action.payload,
+        [action.payload.name]: action.payload,
       })
     case 'REMOVE':
-      let newObj = delete state.id
+      let newObj = delete state[action.payload];
       return Object.assign({}, state, newObj);
     default:
       return state
   }
 };
 
-const map = (state = initialCoordinates, action) => {
+const map = (state = {coordinates:initialCoordinates}, action) => {
   switch (action.type) {
     case 'SELECT_FULFILLED':
       return Object.assign({}, state, {
-        lat: action.payload.lat,
-        lng: action.payload.lng,
+        coordinates: {
+          lat: action.payload.coordinates.lat,
+          lng: action.payload.coordinates.lng,
+        },
+        address: action.payload.address,
+        name: action.payload.name,
       })
+    case 'CLEAR_DIALOG':
+      let newMap = {coordinates: state.coordinates}
+      return newMap;
     default:
       return state
   }
@@ -37,7 +55,8 @@ const map = (state = initialCoordinates, action) => {
 const results = (state = [], action) => {
   switch (action.type) {
     case 'SEARCH_FULFILLED':
-      return action.payload;
+      let results = action.payload.slice(0,5);
+      return results
     default:
       return state
   }
@@ -47,6 +66,7 @@ const rootReducer = combineReducers({
   saved,
   map,
   results,
+  savedDisplay,
 });
 
 export default rootReducer;
