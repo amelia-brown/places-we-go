@@ -50,7 +50,6 @@ export const createMarker = (coordinates, name) => new Promise((resolve, reject)
 });
 
 export const loadMarkers = (markers) => {
-  console.log(markers)
   return Promise.all(markers.map(item => {
     createMarker(item.coordinates, item.name)
   }))
