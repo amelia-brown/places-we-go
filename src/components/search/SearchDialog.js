@@ -23,10 +23,13 @@ class SearchDialog extends Component {
           <span className='search-dialog-address'>{map.address}</span>
         </div>
         <div className='search-dialog-action'>
-          {console.log('xx', saved[map.name])}
-          <i className={`material-icons search-dialog-icon ${saved[map.name] ? 'black' : ''}`}
+          <i className={`material-icons search-dialog-icon filled-in ${saved[map.name] ? 'black' : ''}`}
             onClick={() => save(map)}>
             favorite
+          </i>
+          <i className={`material-icons search-dialog-icon outline ${saved[map.name] ? 'black' : ''}`}
+            onClick={() => save(map)}>
+            {saved[map.name] ? 'favorite' : 'favorite_outline'}
           </i>
         </div>
       </div>

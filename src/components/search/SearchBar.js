@@ -10,10 +10,16 @@ let term;
 
 const Search = ({results, search, map}) => (
   <div className='search'>
-    <input
-      ref={(node) => term = node}
-      placeholder='Search'
-      onChange={debounce(() => search(term.value, map.coordinates), 500)} />
+    <div className='search-container'>
+      <input
+        ref={(node) => term = node}
+        placeholder='Find a place'
+        onChange={debounce(() => search(term.value, map.coordinates), 500)} />
+      <div className='search-button'
+        onClick={() => search(term.value, map.coordinates)}>
+        <i className='material-icons search-icon'>search</i>
+      </div>
+    </div>
     {
       results
       ? results.map((result) => <SearchResults item={result} term={term} />)
