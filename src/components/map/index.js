@@ -6,6 +6,9 @@ import {bindActionCreators} from 'redux';
 import styles from './styles';
 
 class MapContainer extends Component {
+  constructor(props) {
+    super(props);
+  }
   componentDidMount () {
     this.props.select(this.props.map);
   }

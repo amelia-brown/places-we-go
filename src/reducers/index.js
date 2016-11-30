@@ -44,6 +44,9 @@ const map = (state = {coordinates:initialCoordinates}, action) => {
         address: action.payload.address,
         name: action.payload.name,
       })
+    case 'CLEAR_DIALOG':
+      let newMap = {coordinates: state.coordinates}
+      return newMap;
     default:
       return state
   }
