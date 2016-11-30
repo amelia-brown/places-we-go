@@ -5,6 +5,7 @@ export const loadMap = (options) => new Promise((resolve, reject) => {
   let settings = {
     center: options.coordinates,
     zoom: 18,
+    disableDefaultUI: true
   }
   map = new google.maps.Map(document.getElementById('map'), settings);
   createMarker(options.coordinates);
