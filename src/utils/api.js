@@ -10,7 +10,7 @@ export const loadMap = (options) => new Promise((resolve, reject) => {
   createMarker(options.coordinates);
   return resolve(options);
   } catch (err) {
-    console.log(err)
+    reject(err)
   }
 });
 
@@ -25,21 +25,33 @@ export const searchMaps = (text, location) => new Promise((resolve, reject) => {
     location,
     radius: 200000
   }
-  Library.nearbySearch(request, (response) => {
-    return resolve(response);
-  });
+  try {
+    Library.nearbySearch(request, (response) => {
+      return resolve(response);
+    });
+  }
+  catch(e) {
+    reject(e);
+  }
 });
 
 export const createMarker = (coordinates, name) => new Promise((resolve, reject) => {
-  return new google.maps.Marker({
-    position: coordinates,
-    map: map,
-    title: name
-  })
-})
+  try {
+    let marker = new google.maps.Marker({
+      position: coordinates,
+      map: map,
+      title: name
+    })
+    return resolve(marker)
+  }
+  catch(e) {
+    reject(e);
+  }
+});
 
-
-
-
-
-
+export const loadMarkers = (markers) => {
+  console.log(markers)
+  return Promise.all(markers.map(item => {
+    createMarker(item.coordinates, item.name)
+  }))
+}

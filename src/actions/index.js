@@ -23,7 +23,7 @@ export const save = (options) => ({
   payload: options,
 })
 
-export const remove = (name) => ({
+export const remove = (item) => ({
   type: 'REMOVE',
-  payload: name,
+  payload: item
 })

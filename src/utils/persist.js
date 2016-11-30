@@ -1,3 +1,19 @@
+import {loadMarkers} from './api';
+
+export const savedItemsToArray = (saved) => {
+  let savedItems = [];
+  for (var key in saved) {
+    let item = {
+      name: saved[key],
+      coordinates: saved[key].coordinates,
+      name: saved[key].name,
+      address: saved[key].address,
+    }
+    savedItems.push(item);
+  }
+  return savedItems;
+}
+
 export default store => next => action => {
   let prevStorage = localStorage.getItem('store');
   let nextStorage
@@ -9,6 +25,7 @@ export default store => next => action => {
            })
       try {
         localStorage.setItem('store', JSON.stringify(nextStorage));
+        loadMarkers(savedItemsToArray(nextStorage));
       }
       catch(e) {
         console.log('could not save to local storage, ', e);
@@ -19,7 +36,8 @@ export default store => next => action => {
       let nextStorage = Object.assign({}, prevStorage, newObj);
       try {
         localStorage.setItem('store', JSON.stringify(nextStorage));
-      }
+        loadMarkers(savedItemsToArray(nextStorage));
+     }
       catch(e) {
         console.log('could not save to local storage, ', e);
       }
@@ -28,3 +46,5 @@ export default store => next => action => {
       return next(action);
   }
 }
+
+

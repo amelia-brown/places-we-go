@@ -3,20 +3,12 @@ import {connect} from 'react-redux';
 
 import SavedToggle from './SavedToggle';
 import SavedItem from './SavedItem';
+import {savedItemsToArray} from '../../utils/persist';
 
 import styles from './styles';
 
 const Saved = ({saved, savedDisplay}) => {
-  let savedItems = [];
-  for (var key in saved) {
-    let item = {
-      name: saved[key],
-      coordinates: saved[key].coordinates,
-      name: saved[key].name,
-      address: saved[key].address,
-    }
-    savedItems.push(item);
-  }
+  let savedItems = savedItemsToArray(saved);
   if (savedDisplay.hidden === false) {
       return (
         <div className='show saved-sidebar'>
