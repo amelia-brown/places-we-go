@@ -2,7 +2,7 @@ import React from 'react';
 import {search} from '../../actions';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import throttle from 'lodash.throttle';
+import debounce from 'lodash.debounce';
 
 import SearchResults from './SearchResults';
 
@@ -13,7 +13,7 @@ const Search = ({results, search, map}) => (
     <input
       ref={(node) => term = node}
       placeholder='Search'
-      onChange={throttle(() => search(term.value, map.coordinates), 500)} />
+      onChange={debounce(() => search(term.value, map.coordinates), 500)} />
     {
       results
       ? results.map((result) => <SearchResults item={result} term={term} />)

@@ -2,7 +2,6 @@ import React from 'react';
 import {search, select} from '../../actions';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import throttle from 'lodash.throttle';
 
 const SearchResults = ({item, select, search, term}) => (
   <div
@@ -20,8 +19,8 @@ const SearchResults = ({item, select, search, term}) => (
       term.value='';
     }}
     className='search-result'>
-    <span>{item.name}</span>
-    <i className='material-icons'>place</i>
+    <div className='search-result-name'>{item.name}</div>
+    <i className='material-icons search-result-icon'>place</i>
   </div>
 );
 

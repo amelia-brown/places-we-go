@@ -21,6 +21,11 @@
   width: 528px
   padding: 0 16px
   background: #fff
+  @extend .text-card
+  .search-result-name
+    @extend .text-card-subtitle
+  .search-result-icon
+    @extend .text-card-subtitle
 
 .search-dialog
   position: absolute
@@ -40,3 +45,4 @@
     @extend .text-card-subtitle
   .search-dialog-icon
     @extend .text-card-icon
+    font-size: 48px

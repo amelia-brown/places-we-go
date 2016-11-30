@@ -52,7 +52,10 @@ const map = (state = {coordinates:initialCoordinates}, action) => {
 const results = (state = [], action) => {
   switch (action.type) {
     case 'SEARCH_FULFILLED':
-      return action.payload;
+      console.log(action.payload)
+      let results = action.payload.slice(0,5);
+      console.log(results)
+      return results
     default:
       return state
   }
