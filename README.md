@@ -1,6 +1,8 @@
 Zenmapper
 ---
 
+View the project [live](http://ameliabrown.ca/zenmapper).
+
 #### What it does
 
 A simple client-side app that uses Google Places Api to search for and
@@ -28,8 +30,13 @@ familliar and predictable.
 #### Get started
 
 `npm install`
+
 `npm run build`
+
 `open index.html`
+
 or
+
 `npm start`
+
 will open on port 8080 using http-server
